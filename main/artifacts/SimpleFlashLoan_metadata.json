@@ -98,6 +98,10 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -194,11 +198,11 @@
 			]
 		},
 		"main/SimpleFlashLoan.sol": {
-			"keccak256": "0xe2c9626854f4a9717796d9c8380338c9fb127cb86f37949b843acb4173cb0bee",
+			"keccak256": "0xb40a964a54014c644bf182d96f5a48e472ca2c2474da196a014f039e4d938069",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://14283130cd696089b55ea51fe511317c8adaebe698879abbc801dfeb2cad674a",
-				"dweb:/ipfs/QmXtyRCcrmitMVD6MSjRRyV8qseeKbLMoWsfZGCAA2VEwv"
+				"bzz-raw://15260feae1eb8da7132b9aaaa0369f18765d13d4a3516c55042883657d2b4c6c",
+				"dweb:/ipfs/QmQpTeJh3utK1QUoNN9gsccnQ72w4UU3QxPbmz6yHs3uuv"
 			]
 		}
 	},
