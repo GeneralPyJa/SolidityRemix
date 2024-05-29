@@ -100,6 +100,56 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_tokenAddress",
+						"type": "address"
+					}
+				],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "requestFlashLoan",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_tokenAddress",
+						"type": "address"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"stateMutability": "payable",
 				"type": "receive"
 			}
@@ -198,11 +248,11 @@
 			]
 		},
 		"main/SimpleFlashLoan.sol": {
-			"keccak256": "0xb40a964a54014c644bf182d96f5a48e472ca2c2474da196a014f039e4d938069",
+			"keccak256": "0x42a43e77e77fd395082a97bab71dd4357e11bbce8c73129b9c5fc49997de6ab4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://15260feae1eb8da7132b9aaaa0369f18765d13d4a3516c55042883657d2b4c6c",
-				"dweb:/ipfs/QmQpTeJh3utK1QUoNN9gsccnQ72w4UU3QxPbmz6yHs3uuv"
+				"bzz-raw://c4988e5a342a92b2d13d4cdf54369f71026eb147b3e587288774fb8c8bf8eae1",
+				"dweb:/ipfs/QmNika8XHae5xiyVUUKKm3gSpRVucBLYeDLLuBUko4PkPW"
 			]
 		}
 	},

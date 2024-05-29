@@ -18,7 +18,25 @@ contract SimpleFlashLoan is FlashLoanSimpleReceiverBase {
     constructor(address _addressProvider)
     FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider))
     {
+        owner = payable(msg.sender);
+    }
 
+    function requestFlashLoan(
+        address _token, 
+        uint256 _amount
+    ) public {
+        //receiverAddress is the address of the account receiving the flashloan. This is the address of this smart contract.
+        //asset corresponds to the IERC20 token
+        //amount refers to the amount of the tokens to be borrowed
+        //params and referralCode won't be used in this code. They are required by the AAVE flashloan interface
+        address receiverAddress = address(this);
+        address asset = _token;
+        uint256 amount = _amount;
+        bytes memory params = "";
+        uint16 referralCode = 0;
+
+        //This function requests the flash loan using AAVE
+        POOL.flashLoanSimple(receiverAddress, asset, amount, params, referralCode);
     }
 
     function fn_requestFlashLoan(
@@ -35,7 +53,7 @@ contract SimpleFlashLoan is FlashLoanSimpleReceiverBase {
         bytes memory params = "";
         uint16 referralCode = 0;
 
-        //This function finally requests the flash loan
+        //This function requests the flash loan using AAVE
         POOL.flashLoanSimple(receiverAddress, asset, amount, params, referralCode);
     }
 
@@ -49,6 +67,8 @@ contract SimpleFlashLoan is FlashLoanSimpleReceiverBase {
     * @param params The byte-encoded params passed when initiating the flashloan
     * @return True if the execution of the operation succeeds, false otherwise
     */
+
+    
     function executeOperation(
         address asset, 
         uint256 amount, 
@@ -57,15 +77,32 @@ contract SimpleFlashLoan is FlashLoanSimpleReceiverBase {
         bytes calldata params
     ) external override returns (bool) {
 
-        //Logic to be performed before repaying the flash loan goes here
+        //Logic to be performed before repaying the flash loan goes here (We now have the borrowed funds)
 
         //Here, the flash loan is paid back:
         //Calculates the total amount to be paid back to the lender
         uint256 totalAmount = amount + premium;
         //We're approving the IERC20 token with the lending pool such that we can interact with the lending pool for that particular token
         IERC20(asset).approve(address(POOL), totalAmount);
-        
+
         return true;
+    }
+
+    // Used at the end after the flash loan is completed in order to see what the balance of our contract is
+    function getBalance(address _tokenAddress) external view returns (uint256) {
+        return IERC20(_tokenAddress).balanceOf(address(this));
+    }
+
+    // A call to this function leads to sending all holdings of the token (_tokenAddress) to the msgCaller. 
+    // The onlyOwner function modifier makes sure that only the owner of the Contract (we) can receive the tokens.
+    function withdraw(address _tokenAddress) external onlyOwner {
+        IERC20 token = IERC20(_tokenAddress);
+        token.transfer(msg.sender, token.balanceOf(address(this)));
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function.");
+        _;
     }
 
     receive() external payable { }
