@@ -79,6 +79,8 @@ contract SimpleFlashLoan is FlashLoanSimpleReceiverBase {
 
         //Logic to be performed before repaying the flash loan goes here (We now have the borrowed funds)
 
+        
+
         //Here, the flash loan is paid back:
         //Calculates the total amount to be paid back to the lender
         uint256 totalAmount = amount + premium;

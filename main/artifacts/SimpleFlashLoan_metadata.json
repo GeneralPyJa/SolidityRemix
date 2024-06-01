@@ -248,11 +248,11 @@
 			]
 		},
 		"main/SimpleFlashLoan.sol": {
-			"keccak256": "0x42a43e77e77fd395082a97bab71dd4357e11bbce8c73129b9c5fc49997de6ab4",
+			"keccak256": "0x00e37e28fb95f5858f3a8f9ce8985b1d5d9964e093219386836ec29daa26172b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c4988e5a342a92b2d13d4cdf54369f71026eb147b3e587288774fb8c8bf8eae1",
-				"dweb:/ipfs/QmNika8XHae5xiyVUUKKm3gSpRVucBLYeDLLuBUko4PkPW"
+				"bzz-raw://b8e89724087b7eaf535bf2f6dbf812dbc7d0e58e44b722243e893789e03d9cc4",
+				"dweb:/ipfs/QmcLELAkMpKNenD8HvPtxDxJJmHepm9s9A6VqeDAGt6ew7"
 			]
 		}
 	},
